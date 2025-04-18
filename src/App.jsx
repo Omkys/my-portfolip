@@ -109,6 +109,10 @@ function App() {
         <p className="text-gray-600 text-sm">
           &copy; {new Date().getFullYear()} Onkar Bobde. All rights reserved.
         </p>
+        <p className="text-xs text-gray-400 mt-1">
+  Contact: <a href="mailto:bobdeonkar17@gmail.com" className="hover:underline">bobdeonkar17@gmail.com</a>
+</p>
+
       </footer>
     </main>
   );

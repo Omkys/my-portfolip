@@ -1,6 +1,8 @@
-import { FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa';//icons from react-icons github linkedIn instagram x
 import { FaXTwitter } from 'react-icons/fa6'; // X icon
-import credlyLogo from './assets/credly.png'; // Assuming the Credly logo is saved here
+import credlyLogo from './assets/credly.png'; //  Credly logo is saved here
+import { MdEmail } from "react-icons/md";
+
 
 function Connect() {
   return (
@@ -9,6 +11,16 @@ function Connect() {
       <p className="text-gray-700">Reach out on these platforms:</p>
 
       <div className="flex flex-wrap justify-center gap-4">
+        {/* Gmail */}
+<a
+  href="mailto:bobdeonkar17@gmail.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-2 bg-rose-500 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out hover:bg-red-700 hover:scale-105"
+>
+  <MdEmail /> Gmail
+</a>
+
         {/* LinkedIn */}
         <a
           href="https://linkedin.com/in/your-linkedin"
