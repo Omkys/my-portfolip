@@ -80,6 +80,24 @@ function Projects() {
             View Project <FaExternalLinkAlt className="ml-2" />
           </a>
         </motion.div>
+        {/* === Project 4 === */}
+        <motion.div 
+          className="bg-white rounded-xl shadow-md p-6"
+          variants={fadeUpVariant}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h3 className="text-xl font-semibold text-gray-900">Paytm Clone</h3>
+          <p className="text-gray-700 mt-2 mb-4">
+            A End to End created Full stack App of Famous money app PAYTM.
+          </p>
+          <a 
+            href="https://github.com/your-github/personal-blog" 
+            target="_blank"
+            className="inline-flex items-center text-blue-600 hover:underline"
+          >
+            View Project <FaExternalLinkAlt className="ml-2" />
+          </a>
+        </motion.div>
       </div>
     </motion.div>
   );
