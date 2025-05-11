@@ -10,4 +10,113 @@
   .animate-slide-up {
     animation: slideUp 0.4s ease-out forwards;
   }
-  
+  /* App.css */
+/* General Styling */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+/* Profile Image Hover Animation */
+.profile-img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-img:hover {
+  transform: scale(1.1);
+}
+
+/* Profile Card Styling */
+.profile-card {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+/* Interactive Button Hover Effects */
+.interactive-button {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.interactive-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Feedback Button Animation */
+.interactive-feedback-button {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Hover Tooltips for Buttons */
+button:hover {
+  position: relative;
+}
+
+button .tooltip {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+button:hover .tooltip {
+  opacity: 1;
+}
+
+/* Section Transitions */
+.section {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.section.active {
+  opacity: 1;
+}
+
+/* Smooth Scroll Effect */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Footer Styling */
+footer {
+  background-color: lightpink ; /* //////////////here change the color of the background */ 
+  padding: 30px 0;
+}
+
+footer p {
+  margin: 0;
+  color: #555;
+}
+
+footer a {
+  text-decoration: none;
+  color: #ff6b6b;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
