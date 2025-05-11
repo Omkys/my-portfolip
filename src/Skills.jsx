@@ -1,81 +1,81 @@
-import { FaReact, FaNodeJs, FaDatabase, FaHtml5, FaCss3Alt, FaGithub, FaDocker } from 'react-icons/fa';
-import { SiTailwindcss, SiJavascript, SiMongodb, SiDocker } from 'react-icons/si';
+import { FaReact, FaHtml5, FaCss3Alt, FaJsSquare, FaGitAlt, FaDocker, FaNodeJs, FaGithub } from 'react-icons/fa';
+import { SiTailwindcss, SiMongodb, SiExpress, SiZod } from 'react-icons/si';
+import { motion } from 'framer-motion';
 
-function Skills() {
+const frontendSkills = [
+  { name: 'React', icon: FaReact, color: 'text-sky-500' },
+  { name: 'JavaScript', icon: FaJsSquare, color: 'text-yellow-500' },
+  { name: 'HTML5', icon: FaHtml5, color: 'text-orange-500' },
+  { name: 'CSS3', icon: FaCss3Alt, color: 'text-blue-500' },
+  { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'text-cyan-500' },
+];
+
+const backendSkills = [
+  { name: 'Node.js', icon: FaNodeJs, color: 'text-green-600' },
+  { name: 'Express.js', icon: SiExpress, color: 'text-gray-700' },
+  { name: 'MongoDB', icon: SiMongodb, color: 'text-green-600' },
+  { name: 'Zod', icon: SiZod, color: 'text-purple-600' },
+];
+
+const otherSkills = [
+  { name: 'Git', icon: FaGitAlt, color: 'text-red-600' },
+  { name: 'GitHub', icon: FaGithub, color: 'text-gray-800' }, // GitHub icon
+  { name: 'Docker', icon: FaDocker, color: 'text-blue-600' }, // Docker
+  { name: 'Postman', icon: FaGitAlt, color: 'text-orange-600' }, // Postman (using Git icon for now)
+];
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const SkillCard = ({ Icon, name, color }) => (
+  <motion.div
+    className="group bg-white rounded-xl p-5 shadow-md transition-all duration-300 flex flex-col items-center justify-center gap-3"
+    variants={fadeIn}
+    whileHover={{ scale: 1.05, boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}
+  >
+    <Icon className={`text-3xl ${color} transition-all duration-300`} />
+    <p className="text-sm text-gray-600 font-medium">{name}</p>
+  </motion.div>
+);
+
+const SkillSection = ({ title, skills }) => (
+  <motion.div
+    className="bg-neutral-50 rounded-2xl p-6 shadow-lg"
+    variants={fadeIn}
+  >
+    <h3 className="text-lg font-semibold text-neutral-800 text-center mb-6">{title}</h3>
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+      {skills.map((skill, index) => (
+        <SkillCard key={index} Icon={skill.icon} name={skill.name} color={skill.color} />
+      ))}
+    </div>
+  </motion.div>
+);
+
+export default function Skills() {
   return (
-    <section className="py-12 bg-blue-100 text-gray-800">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-900 mb-6">My Skills</h2>
+    <motion.section
+      id="skills"
+      className="max-w-6xl mx-auto px-6 py-16"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ staggerChildren: 0.1 }}
+    >
+      <motion.h2
+        className="text-4xl font-semibold text-center text-neutral-800 mb-12"
+        variants={fadeIn}
+      >
+        Skills & Expertise
+      </motion.h2>
 
-        {/* Skill Categories */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          {/* Frontend Skills */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-2xl font-semibold mb-4">Frontend</h3>
-            <div className="flex flex-wrap justify-start gap-6">
-              <div className="flex items-center gap-2">
-                <FaHtml5 className="text-orange-500 text-3xl" />
-                <span className="font-medium">HTML5</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <FaCss3Alt className="text-blue-500 text-3xl" />
-                <span className="font-medium">CSS3</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <SiTailwindcss className="text-teal-400 text-3xl" />
-                <span className="font-medium">Tailwind CSS</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <FaReact className="text-blue-600 text-3xl" />
-                <span className="font-medium">React</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <SiJavascript className="text-yellow-400 text-3xl" />
-                <span className="font-medium">JavaScript</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Backend Skills */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-2xl font-semibold mb-4">Backend</h3>
-            <div className="flex flex-wrap justify-start gap-6">
-              <FaNodeJs className="text-green-500 text-3xl" />
-              <span className="font-medium">Node.js</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <SiMongodb className="text-green-700 text-3xl" />
-              <span className="font-medium">MongoDB</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <FaGithub className="text-gray-900 text-3xl" />
-              <span className="font-medium">Git/GitHub</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <FaDocker className="text-blue-500 text-3xl" />
-              <span className="font-medium">Docker</span>
-            </div>
-          </div>
-
-          {/* Tools & Other Skills */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-2xl font-semibold mb-4">Tools & Other Skills</h3>
-            <div className="flex flex-wrap justify-start gap-6">
-              <div className="flex items-center gap-2">
-                <FaDatabase className="text-red-500 text-3xl" />
-                <span className="font-medium">SQL</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <SiDocker className="text-blue-400 text-3xl" />
-                <span className="font-medium">Docker</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="flex flex-col gap-8">
+        <SkillSection title="Frontend Technologies" skills={frontendSkills} />
+        <SkillSection title="Backend Technologies" skills={backendSkills} />
+        <SkillSection title="Other Tools" skills={otherSkills} />
       </div>
-    </section>
+    </motion.section>
   );
 }
-
-export default Skills;

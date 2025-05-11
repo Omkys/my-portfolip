@@ -7,6 +7,7 @@ import Feedback from './Feedback';
 import Education from './Education';
 import { Toaster, toast } from 'react-hot-toast';
 import profilePic from './assets/my pic.jpg'; // Adjust path if needed
+import Certificate from './certificate'; // Adjust the path if needed
 
 function App() {
   const [showSection, setShowSection] = useState(null);
@@ -17,12 +18,12 @@ function App() {
       {/* Toast Notifications */}
       <Toaster position="top-right" reverseOrder={false} />
 
-      {/* Profile Card */}
-      <div className="profile-card absolute top-16 left-2 sm:left-4 md:left-6 w-32 h-32 sm:w-36 sm:h-46 md:w-70 md:h-100 overflow-hidden border-4 border-amber-500 rounded-2xl shadow-xl z-50">
+      {/* Profile Card (mobile-friendly and absolute only on desktop) */}
+      <div className="md:absolute md:top-16 md:left-6 w-28 h-28 sm:w-36 sm:h-50 md:w-70 md:h-95 overflow-hidden border-4 border-amber-500 rounded-2xl shadow-xl z-40 mb-6 md:mb-0">
         <img
           src={profilePic}
           alt="Profile"
-          className="profile-img w-full h-full object-cover rounded-2xl transform transition-transform duration-300 hover:scale-110"
+          className="w-full h-full object-cover rounded-2xl transition-transform duration-300 hover:scale-110"
         />
       </div>
 
@@ -43,17 +44,17 @@ function App() {
           </div>
         </div>
 
-        {/* Buttons */}
+        {/* Buttons - Removed "Let's Connect" Button Beside Certification */}
         <div className="flex flex-wrap gap-4 sm:gap-6 mt-4 sm:mt-6 justify-center">
-          {['projects', 'skills', 'connect', 'education'].map((section) => (
+          {['projects', 'skills', 'certificates', 'education'].map((section) => (
             <button
               key={section}
-              className="interactive-button bg-neutral-600 hover:bg-neutral-700 text-white font-medium py-3 px-5 sm:px-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105"
+              className="bg-neutral-600 hover:bg-neutral-700 text-white font-medium py-3 px-5 sm:px-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105"
               onClick={() => setShowSection(section)}
             >
               {section === 'projects' && '🚀 Projects'}
               {section === 'skills' && '🛠️ Skills'}
-              {section === 'connect' && "🤝 Let's Connect"}
+              {section === 'certificates' && '🎖️ Certifications'}
               {section === 'education' && '🎓 Education'}
             </button>
           ))}
@@ -65,7 +66,7 @@ function App() {
                 window.open('/resume/Onkar_Bobde-Resume.pdf', '_blank');
               }, 1000);
             }}
-            className="interactive-button bg-neutral-500 hover:bg-neutral-600 text-white font-medium py-3 px-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105"
+            className="bg-neutral-500 hover:bg-neutral-600 text-white font-medium py-3 px-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105"
           >
             📄 View Resume
           </button>
@@ -77,18 +78,30 @@ function App() {
         <div className="w-full max-w-4xl">
           {showSection === 'projects' && <Projects />}
           {showSection === 'skills' && <Skills />}
+          {showSection === 'certificates' && <Certificate />}
           {showSection === 'connect' && <Connect />}
           {showSection === 'education' && <Education />}
         </div>
       </div>
 
       {/* Feedback Button */}
+      <div className="fixed bottom-6 left-6 z-50">
+        <button
+  className="bg-amber-200 hover:bg-amber-300 text-neutral-800 font-medium py-3 px-6 rounded-full shadow-md transition-all duration-300 transform hover:scale-105 feedback-button"
+  onClick={() => setShowFeedback(true)}
+>
+  💬 Feedback
+</button>
+
+      </div>
+
+      {/* Bottom Right "Let's Connect" Button */}
       <div className="fixed bottom-6 right-6 z-50">
         <button
-          className="interactive-feedback-button bg-amber-200 hover:bg-amber-300 text-neutral-800 font-medium py-3 px-6 rounded-full shadow-md transition-all duration-300 transform hover:scale-105"
-          onClick={() => setShowFeedback(true)}
+          className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 connect-button"
+          onClick={() => setShowSection('connect')} // Now this should trigger the Connect section
         >
-          💬 Feedback
+          🤝 Let's Connect
         </button>
       </div>
 

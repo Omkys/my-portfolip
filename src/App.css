@@ -1,122 +1,89 @@
-@keyframes slideUp {
-    from {
-      transform: translateY(100%);
-    }
-    to {
-      transform: translateY(0);
-    }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fade-in animation for section entry */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  .animate-slide-up {
-    animation: slideUp 0.4s ease-out forwards;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  /* App.css */
-/* General Styling */
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f7f7f7;
-  margin: 0;
-  padding: 0;
 }
 
-/* Profile Image Hover Animation */
-.profile-img {
+@keyframes fade-in-slow {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-in-out both;
+}
+
+.animate-fade-in-slow {
+  animation: fade-in-slow 1s ease-in-out both;
+}
+
+/* Optional: Smooth image scaling on hover for profile image */
+.profile-image {
   transition: transform 0.3s ease-in-out;
 }
-
-.profile-img:hover {
+.profile-image:hover {
   transform: scale(1.1);
 }
 
-/* Profile Card Styling */
-.profile-card {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
+/* Responsive fixes for small screens */
+@media (max-width: 640px) {
+  .profile-card {
+    width: 6rem;
+    height: 6rem;
+    left: 1rem;
+    top: 4rem;
+  }
 }
-
-/* Interactive Button Hover Effects */
-.interactive-button {
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.interactive-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Feedback Button Animation */
-.interactive-feedback-button {
-  animation: bounce 1s infinite;
-}
-
+/* Add bounce animation for the feedback button */
 @keyframes bounce {
-  0% {
+  0%, 100% {
     transform: translateY(0);
   }
   50% {
     transform: translateY(-10px);
   }
-  100% {
+}
+
+.dancing-button {
+  animation: bounce 1s infinite;
+}
+/* App.css */
+
+/* Add Dancing Animation for the Button */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
     transform: translateY(0);
   }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+/*
+.connect-button {
+  animation: bounce 1s infinite;
 }
 
-/* Hover Tooltips for Buttons */
-button:hover {
-  position: relative;
-}
+ Add Dancing Animation for the Feedback Button added euerything just comment out this and everthing will be sorted*/ 
 
-button .tooltip {
-  position: absolute;
-  bottom: 100%;
-  margin-bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 12px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease-in-out;
-}
-
-button:hover .tooltip {
-  opacity: 1;
-}
-
-/* Section Transitions */
-.section {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.section.active {
-  opacity: 1;
-}
-
-/* Smooth Scroll Effect */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Footer Styling */
-footer {
-  background-color: lightpink ; /* //////////////here change the color of the background */ 
-  padding: 30px 0;
-}
-
-footer p {
-  margin: 0;
-  color: #555;
-}
-
-footer a {
-  text-decoration: none;
-  color: #ff6b6b;
-}
-
-footer a:hover {
-  text-decoration: underline;
+.feedback-button {
+  animation: bounce 2s infinite;
 }
