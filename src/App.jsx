@@ -19,7 +19,7 @@ function App() {
       <Toaster position="top-right" reverseOrder={false} />
 
       {/* Profile Image */}
-      <div className="md:absolute md:top-22 md:left-6 w-28 h-28 sm:w-36 sm:h-50 md:w-70 md:h-95 overflow-hidden border-4 border-amber-500 rounded-2xl shadow-xl z-40 mb-6 md:mb-0">
+      <div className="md:absolute md:top-22 md:left-6 w-28 h-45 sm:w-36 sm:h-50 md:w-70 md:h-95 overflow-hidden border-4 border-amber-500 rounded-2xl shadow-xl z-40 mb-6 md:mb-0">
         <img
           src={profilePic}
           alt="Profile"
