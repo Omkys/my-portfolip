@@ -2,7 +2,7 @@ import toast from 'react-hot-toast';
 
 export default function NavButtons({ setShowSection }) {
   return (
-    <div className="flex flex-wrap gap-4 sm:gap-6 mt-4 sm:mt-6 justify-center md:justify-start ml-2 sm:ml-6 md:ml-8">
+    <div className="flex flex-wrap gap-4 sm:gap-6 mt-6 sm:mt-12 justify-center md:justify-start ml-2 sm:ml-6 md:ml-8">
       {['projects', 'skills', /*'certificates', 'education'  -----"if later want to add the icons uncomment this too if you want"*/].map((section) => (
         <button
           key={section}

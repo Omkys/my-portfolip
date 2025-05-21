@@ -11,7 +11,7 @@ export default function IntroSection({ setShowSection }) {
           <p className="text-lg sm:text-xl text-neutral-600">
             Full Stack Developer | MERN | DevOps Enthusiast
           </p>
-          <p className="text-neutral-700 leading-relaxed mt-4">
+          <p className="text-neutral-700 leading-relaxed mt-5">
             I build scalable and efficient web applications using the MERN
             stack. I'm passionate about clean code, modern UI/UX, and
             continuous learning. Always ready for the next challenge!

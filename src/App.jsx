@@ -31,7 +31,7 @@ function App() {
       {/* ✅ Sticky Navbar at the top */}
       <Navbar setShowSection={setShowSection} />
 
-      <main className="min-h-screen bg-gradient-to-r from-yellow-50 via-amber-100 to-rose-100 text-neutral-800 flex flex-col items-center justify-start px-4 sm:px-6 py-10 relative">
+      <main className="min-h-screen bg-gradient-to-r from-yellow-50 via-amber-100 to-rose-100 text-neutral-800 flex flex-col items-center justify-start px-4 sm:px-6 py-15 relative">
         <Toaster position="top-right" reverseOrder={false} />
 
         {/* Profile Image */}

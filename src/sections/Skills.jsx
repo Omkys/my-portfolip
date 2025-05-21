@@ -31,7 +31,7 @@ const fadeIn = {
 
 const SkillCard = ({ Icon, name, color }) => (
   <motion.div
-    className="group bg-white rounded-xl p-5 shadow-md transition-all duration-300 flex flex-col items-center justify-center gap-3"
+    className="group bg-white rounded-xl p-5 shadow-md transition-all duration-300 flex flex-col items-center justify-center gap-1"
     variants={fadeIn}
     whileHover={{ scale: 1.05, boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}
   >
@@ -46,7 +46,7 @@ const SkillSection = ({ title, skills }) => (
     variants={fadeIn}
   >
     <h3 className="text-lg font-semibold text-neutral-800 text-center mb-6">{title}</h3>
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
       {skills.map((skill, index) => (
         <SkillCard key={index} Icon={skill.icon} name={skill.name} color={skill.color} />
       ))}
@@ -58,7 +58,7 @@ export default function Skills() {
   return (
     <motion.section
       id="skills"
-      className="max-w-6xl mx-auto px-6 py-16"
+      className="max-w-6xl mx-auto px-6 py-2"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
