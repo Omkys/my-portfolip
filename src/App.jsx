@@ -28,22 +28,20 @@ function App() {
 
   return (
     <>
-      {/* ✅ Sticky Navbar at the top */}
       <Navbar setShowSection={setShowSection} />
 
-      <main className="min-h-screen bg-gradient-to-r from-yellow-50 via-amber-100 to-rose-100 text-neutral-800 flex flex-col items-center justify-start px-4 sm:px-6 py-15 relative">
+      <main className="min-h-screen pt-24 bg-gradient-to-r from-yellow-50 via-amber-100 to-rose-100 text-neutral-800 flex flex-col items-center justify-start px-4 sm:px-6 relative">
         <Toaster position="top-right" reverseOrder={false} />
 
         {/* Profile Image */}
-<div className="w-28 h-45 sm:w-36 sm:h-50 md:w-70 md:h-95 overflow-hidden border-4 border-amber-500 rounded-2xl shadow-xl z-40 mb-3 md:mb-0 
-  sm:relative sm:top-10 md:absolute md:top-36 md:left-6">
-  <img
-    src={profilePic}
-    alt="Profile"
-    className="w-full h-full object-cover rounded-2xl transition-transform duration-300 hover:scale-110"
-  />
-</div>
-
+        <div className="w-28 h-45 sm:w-36 sm:h-50 md:w-70 md:h-95 overflow-hidden border-4 border-amber-500 rounded-2xl shadow-xl z-40 mb-3 md:mb-0 
+          sm:relative sm:top-12 md:absolute md:top-36 md:left-6">
+          <img
+            src={profilePic}
+            alt="Profile"
+            className="w-full h-full object-cover rounded-2xl transition-transform duration-300 hover:scale-110"
+          />
+        </div>
 
         {/* Intro/About Section */}
         <IntroSection setShowSection={setShowSection} />
