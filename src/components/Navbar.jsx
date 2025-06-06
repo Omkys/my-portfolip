@@ -90,12 +90,12 @@ function NavButtons({ handleClick }) {
       >
         Certifications
       </button>
-      <button
+     {/* <button
         onClick={() => handleClick('education')}
         className="hover:text-amber-400 transition duration-200 hover:underline"
       >
         Education
-      </button>
+      </button>  Uncomment if you want to add Connect section later */}
       <button
         onClick={() => handleClick('contactme')}
         className="hover:text-amber-400 transition duration-200 hover:underline"

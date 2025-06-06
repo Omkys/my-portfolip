@@ -52,7 +52,7 @@ function App() {
             {showSection === 'about' ? (
               <section className="fade-in w-full max-w-4xl bg-white shadow-xl rounded-2xl p-6 sm:p-10 md:p-12 mt-4 ml-2 sm:ml-2 md:ml-6 border-t-4 border-amber-300 text-center">
                 <h2 className="text-3xl font-bold text-neutral-700 mb-4">
-                  👋 YO! Heyy.. it's me here
+                  👋  Heyy..! 
                 </h2>
                 <p className="text-xl text-neutral-600 font-medium leading-relaxed">
                   <Typewriter
