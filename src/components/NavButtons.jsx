@@ -21,7 +21,7 @@ export default function NavButtons({ setShowSection }) {
         onClick={() => {
           toast.success('Opening Resume in a new tab...');
           setTimeout(() => {
-            window.open('/resume/Onkar_Bobde-Resume.pdf', '_blank');
+            window.open('/resume/Onkar-Bobde.pdf', '_blank');
           }, 1000);
         }}
         className="bg-neutral-500 hover:bg-neutral-600 text-white font-medium py-3 px-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105"
