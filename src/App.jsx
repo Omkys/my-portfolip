@@ -1,97 +1,103 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState, Suspense } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import './App.css';
-import IntroSection from './components/About';
-import SectionRenderer from './components/SectionRenderer';
-import FabButtons from './components/FabButtons';
-import Feedback from './sections/Feedback';
+import Hero from './components/Hero';
+import Projects from './sections/Project';
+import Skills from './sections/Skills';
+import ContactMe from './sections/Contactme';
+import Certificate from './sections/certificate';
+import AboutMe from './sections/AboutMe';
 import Footer from './components/Footer';
-import { Toaster, toast } from 'react-hot-toast';
-import profilePic from './assets/my pic.jpg';
+import LoadingSpinner from './components/LoadingSpinner';
+import { Toaster } from 'react-hot-toast';
 import { ArrowUp } from 'lucide-react';
-import Navbar from './components/Navbar'; // ✅ Navbar added
-import { Typewriter } from 'react-simple-typewriter';
+import Navbar from './components/Navbar';
 
 function App() {
-  const [showSection, setShowSection] = useState('about');
-  const [showFeedback, setShowFeedback] = useState(false);
-  const [showTopBtn, setShowTopBtn] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const getCurrentSection = () => {
+    const path = location.pathname;
+    if (path === '/projects') return 'projects';
+    if (path === '/skills') return 'skills';
+    if (path === '/certificates') return 'certificates';
+    if (path === '/about') return 'about';
+    if (path === '/contact') return 'contactme';
+    return 'about';
+  };
+
+  const setActiveSection = (section) => {
+    if (section === 'about') {
+      navigate('/');
+    } else if (section === 'contactme') {
+      navigate('/contact');
+    } else {
+      navigate(`/${section}`);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowTopBtn(window.scrollY > 300);
+      setShowScrollTop(window.scrollY > 400);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <>
-      <Navbar setShowSection={setShowSection} />
-
-      <main className="min-h-screen pt-24 bg-gradient-to-r from-yellow-50 via-amber-100 to-rose-100 text-neutral-800 flex flex-col items-center justify-start px-4 sm:px-6 relative">
-        <Toaster position="top-right" reverseOrder={false} />
-
-        {/* Profile Image */}
-        <div className="w-28 h-45 sm:w-36 sm:h-50 md:w-70 md:h-95 overflow-hidden border-4 border-amber-500 rounded-2xl shadow-xl z-40 mb-3 md:mb-0 
-          sm:relative sm:top-12 md:absolute md:top-36 md:left-6">
-          <img
-            src={profilePic}
-            alt="Profile"
-            className="w-full h-full object-cover rounded-2xl transition-transform duration-300 hover:scale-110"
-          />
-        </div>
-
-        {/* Intro/About Section */}
-        <IntroSection setShowSection={setShowSection} />
-
-        {/* Main Section Renderer */}
-        <div className="mt-13 w-full flex justify-center">
-          <div className="w-full max-w-4xl">
-            {showSection === 'about' ? (
-              <section className="fade-in w-full max-w-4xl bg-white shadow-xl rounded-2xl p-6 sm:p-10 md:p-12 mt-4 ml-2 sm:ml-2 md:ml-6 border-t-4 border-amber-300 text-center">
-                <h2 className="text-3xl font-bold text-neutral-700 mb-4">
-                  👋  Heyy..! 
-                </h2>
-                <p className="text-xl text-neutral-600 font-medium leading-relaxed">
-                  <Typewriter
-                    words={[
-                      "Hi, I'm Onkar — a Full Stack Developer passionate about building meaningful digital experiences.",
-                      "I love the MERN stack, clean UI, and automating things through DevOps!",
-                      "I believe good code is like a good nap — short, sweet, and leaves you feeling refreshed. 😴",
-                      "Let’s build something awesome together 🚀(with fewer bugs and more coffee)!😁"
-                    ]}
-                    loop={0}
-                    cursor
-                    cursorStyle="|"
-                    typeSpeed={35}
-                    deleteSpeed={30}
-                    delaySpeed={3000}
-                  />
-                </p>
-              </section>
-            ) : (
-              <SectionRenderer showSection={showSection} />
-            )}
-          </div>
-        </div>
-
-        {/* Floating Action Buttons */}
-        <FabButtons
-          setShowSection={setShowSection}
-          setShowFeedback={setShowFeedback}
-          showTopBtn={showTopBtn}
-          scrollToTop={scrollToTop}
-        />
-
-        {/* Feedback Popup */}
-        {showFeedback && <Feedback onClose={() => setShowFeedback(false)} />}
-
-        {/* Footer */}
-        <Footer />
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      <Toaster 
+        position="top-right" 
+        reverseOrder={false}
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: '#1f2937',
+            color: '#fff',
+            borderRadius: '12px',
+            padding: '16px',
+            fontSize: '14px',
+            fontWeight: '500'
+          }
+        }}
+      />
+      
+      <Navbar activeSection={getCurrentSection()} setActiveSection={setActiveSection} />
+      
+      <main className="pt-16">
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path="/" element={<Hero setActiveSection={setActiveSection} />} />
+            <Route path="/about" element={<AboutMe setActiveSection={setActiveSection} />} />
+            <Route path="/projects" element={<Projects setActiveSection={setActiveSection} />} />
+            <Route path="/skills" element={<Skills setActiveSection={setActiveSection} />} />
+            <Route path="/certificates" element={<Certificate setActiveSection={setActiveSection} />} />
+            <Route path="/contact" element={<ContactMe setActiveSection={setActiveSection} />} />
+          </Routes>
+        </Suspense>
       </main>
-    </>
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white p-4 rounded-full shadow-xl transition-all duration-300 z-50 transform hover:scale-110"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp className="w-5 h-5" />
+        </button>
+      )}
+      
+      <Footer />
+    </div>
   );
 }
 

@@ -1,107 +1,99 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { User, Briefcase, Code, Mail, Award, Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
-export default function Navbar({ setShowSection }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+export default function Navbar({ activeSection, setActiveSection }) {
+  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Detect screen size on load and resize
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768); // md breakpoint at 768px
-    };
-
-    checkScreenSize(); // initial check
-
-    window.addEventListener('resize', checkScreenSize);
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
+  const navItems = [
+    { id: 'about', label: 'About', icon: User, path: '/' },
+    { id: 'projects', label: 'Projects', icon: Briefcase, path: '/projects' },
+    { id: 'skills', label: 'Skills', icon: Code, path: '/skills' },
+    { id: 'certificates', label: 'Certificates', icon: Award, path: '/certificates' },
+    { id: 'contactme', label: 'Contact', icon: Mail, path: '/contact' },
+  ];
 
   const handleNavClick = (section) => {
-    setShowSection(section);
-    setMenuOpen(false);
+    setActiveSection(section);
+    setIsMenuOpen(false);
+  };
+
+  const isActive = (path) => {
+    if (path === '/' && location.pathname === '/') return true;
+    if (path !== '/' && location.pathname === path) return true;
+    return false;
   };
 
   return (
-    <nav className="w-full bg-neutral-800 text-white py-4 px-6 shadow-md fixed top-0 z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <h1
-          className="text-xl font-bold hover:text-amber-400 transition duration-200 cursor-pointer"
-        >
-          Onkar Bobde
-        </h1>
+    <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-gray-100 z-50 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex justify-between items-center h-18">
+          {/* Logo */}
+          <Link
+            to="/"
+            className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent hover:from-blue-700 hover:to-indigo-700 transition-all duration-300"
+          >
+            Onkar Bobde
+          </Link>
 
-        {/* Conditionally render div based on isMobile */}
-        {isMobile ? (
-          <>
-            {/* Mobile hamburger */}
-            <div>
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                aria-label="Toggle menu"
-                className="focus:outline-none"
-              >
-                {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-2">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.id}
+                  to={item.path}
+                  className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 relative ${
+                    isActive(item.path)
+                      ? 'text-blue-600 bg-blue-50 shadow-sm'
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  {item.label}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden border-t border-gray-100 bg-white">
+            <div className="px-4 py-2 space-y-1">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.id}
+                    to={item.path}
+                    onClick={() => handleNavClick(item.id)}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
+                      isActive(item.path)
+                        ? 'text-blue-600 bg-blue-50'
+                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                    }`}
+                  >
+                    <Icon className="w-5 h-5" />
+                    {item.label}
+                  </Link>
+                );
+              })}
             </div>
-
-            {/* Mobile dropdown menu */}
-            {menuOpen && (
-              <div className="flex flex-col space-y-4 px-4 pb-4">
-                <NavButtons handleClick={handleNavClick} />
-              </div>
-            )}
-          </>
-        ) : (
-          /* Desktop/Tablet nav buttons */
-          <div className="flex space-x-6">
-            <NavButtons handleClick={handleNavClick} />
           </div>
         )}
       </div>
     </nav>
-  );
-}
-
-function NavButtons({ handleClick }) {
-  return (
-    <>
-      <button
-        onClick={() => handleClick('about')}
-        className="hover:text-amber-400 transition duration-200 hover:underline"
-      >
-        About
-      </button>
-      <button
-        onClick={() => handleClick('projects')}
-        className="hover:text-amber-400 transition duration-200 hover:underline"
-      >
-        Projects
-      </button>
-      <button
-        onClick={() => handleClick('skills')}
-        className="hover:text-amber-400 transition duration-200 hover:underline"
-      >
-        Skills
-      </button>
-      <button
-        onClick={() => handleClick('certificates')}
-        className="hover:text-amber-400 transition duration-200 hover:underline"
-      >
-        Certifications
-      </button>
-     {/* <button
-        onClick={() => handleClick('education')}
-        className="hover:text-amber-400 transition duration-200 hover:underline"
-      >
-        Education
-      </button>  Uncomment if you want to add Connect section later */}
-      <button
-        onClick={() => handleClick('contactme')}
-        className="hover:text-amber-400 transition duration-200 hover:underline"
-      >
-        Contact me
-      </button>
-    </>
   );
 }
