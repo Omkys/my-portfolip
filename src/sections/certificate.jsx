@@ -4,13 +4,13 @@ import { Award, ExternalLink, Calendar, CheckCircle, Star } from 'lucide-react';
 
 const certificates = [
   {
-    title: "MongoDB Certified Developer",
-    issuer: "MongoDB University",
+    title: "AWS Cloud Fundamentals",
+    issuer: "Amazon Web Services",
     date: "2024",
-    credentialId: "CERT-12345",
-    skills: ["MongoDB", "Database Design", "Aggregation"],
+    credentialId: "e3e1d99f-42ce-486a-b352-6c39e04c9092",
+    skills: ["AWS Support", "AWS Cloud", "AWS Core Services", "Cloud Computing"],
     verified: true,
-    link: "https://www.credly.com/users/onkar-bobde.fe3f30b9"
+    link: "https://www.credly.com/badges/e3e1d99f-42ce-486a-b352-6c39e04c9092/public_url"
   },
   {
     title: "React Developer Certification",
