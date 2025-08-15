@@ -13,7 +13,7 @@ const certificates = [
     link: "https://www.credly.com/badges/e3e1d99f-42ce-486a-b352-6c39e04c9092/public_url"
   },
   {
-    title: "React Developer Certification",
+    title: "Python Certification",
     issuer: "Meta",
     date: "2023",
     credentialId: "META-67890",
