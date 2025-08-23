@@ -8,8 +8,8 @@ const projects = [
     title: 'College Event Management System',
     description: 'Full-stack MERN application for college event management with real-time notifications, user registration, and comprehensive admin dashboard.',
     technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'JWT'],
-    github: 'https://github.com/Omkys/college-event-management',
-    demo: 'https://college-events.vercel.app',
+    github: 'https://github.com/Omkys/Eventhub',
+    demo: 'https://eventhub-neon.vercel.app/',
     image: '/api/placeholder/600/400',
     featured: true,
     year: '2024'
