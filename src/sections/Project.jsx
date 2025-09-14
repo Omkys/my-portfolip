@@ -46,32 +46,9 @@ const projects = [
   }
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-};
-
-export default function Projects({ setActiveSection }) {
+export default function Projects() {
   return (
     <section className="min-h-screen py-16 px-4 bg-white">
-      {/* Back Button */}
       <div className="max-w-6xl mx-auto mb-8">
         <Link
           to="/"
@@ -85,7 +62,6 @@ export default function Projects({ setActiveSection }) {
       </div>
 
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -101,7 +77,6 @@ export default function Projects({ setActiveSection }) {
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
         <div className="space-y-12">
           {projects.map((project, index) => (
             <motion.div
@@ -114,20 +89,17 @@ export default function Projects({ setActiveSection }) {
               }`}
             >
               <div className="grid md:grid-cols-2 gap-0">
-                {/* Project Image */}
                 <div className="relative h-64 md:h-80 bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <Code className="w-16 h-16 text-blue-300" />
                   </div>
                   
-                  {/* Project Number */}
                   <div className="absolute top-4 left-4">
                     <span className="bg-white/90 text-gray-700 px-3 py-1 rounded-full text-sm font-bold">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
                   
-                  {/* Featured Badge */}
                   {project.featured && (
                     <div className="absolute top-4 right-4">
                       <div className="flex items-center gap-1 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
@@ -137,7 +109,6 @@ export default function Projects({ setActiveSection }) {
                     </div>
                   )}
                   
-                  {/* Year */}
                   <div className="absolute bottom-4 left-4">
                     <div className="flex items-center gap-1 bg-white/90 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
                       <Calendar className="w-3 h-3" />
@@ -146,7 +117,6 @@ export default function Projects({ setActiveSection }) {
                   </div>
                 </div>
 
-                {/* Project Content */}
                 <div className="p-8 md:p-10 flex flex-col justify-center">
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
                     {project.title}
@@ -156,7 +126,6 @@ export default function Projects({ setActiveSection }) {
                     {project.description}
                   </p>
                   
-                  {/* Technologies */}
                   <div className="mb-8">
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, techIndex) => (
@@ -170,7 +139,6 @@ export default function Projects({ setActiveSection }) {
                     </div>
                   </div>
                   
-                  {/* Action Buttons */}
                   <div className="flex flex-col sm:flex-row gap-3">
                     <a
                       href={project.github}
@@ -197,7 +165,6 @@ export default function Projects({ setActiveSection }) {
           ))}
         </div>
 
-        {/* GitHub CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

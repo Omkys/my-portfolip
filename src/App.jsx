@@ -16,27 +16,6 @@ import Navbar from './components/Navbar';
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
-
-  const getCurrentSection = () => {
-    const path = location.pathname;
-    if (path === '/projects') return 'projects';
-    if (path === '/skills') return 'skills';
-    if (path === '/certificates') return 'certificates';
-    if (path === '/about') return 'about';
-    if (path === '/contact') return 'contactme';
-    return 'about';
-  };
-
-  const setActiveSection = (section) => {
-    if (section === 'about') {
-      navigate('/');
-    } else if (section === 'contactme') {
-      navigate('/contact');
-    } else {
-      navigate(`/${section}`);
-    }
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,17 +49,17 @@ function App() {
         }}
       />
       
-      <Navbar activeSection={getCurrentSection()} setActiveSection={setActiveSection} />
+      <Navbar />
       
       <main className="pt-16">
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
-            <Route path="/" element={<Hero setActiveSection={setActiveSection} />} />
-            <Route path="/about" element={<AboutMe setActiveSection={setActiveSection} />} />
-            <Route path="/projects" element={<Projects setActiveSection={setActiveSection} />} />
-            <Route path="/skills" element={<Skills setActiveSection={setActiveSection} />} />
-            <Route path="/certificates" element={<Certificate setActiveSection={setActiveSection} />} />
-            <Route path="/contact" element={<ContactMe setActiveSection={setActiveSection} />} />
+            <Route path="/" element={<Hero />} />
+            <Route path="/about" element={<AboutMe />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/certificates" element={<Certificate />} />
+            <Route path="/contact" element={<ContactMe />} />
           </Routes>
         </Suspense>
       </main>

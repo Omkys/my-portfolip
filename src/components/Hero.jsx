@@ -135,7 +135,7 @@ export default function Hero({ setActiveSection }) {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com/in/onkar-bobde"
+                href="https://www.linkedin.com/in/onkar-bobde-770354286/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 text-gray-600 hover:text-blue-600"

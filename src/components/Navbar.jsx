@@ -2,7 +2,7 @@ import { User, Briefcase, Code, Mail, Award, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
-export default function Navbar({ activeSection, setActiveSection }) {
+export default function Navbar() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -13,11 +13,6 @@ export default function Navbar({ activeSection, setActiveSection }) {
     { id: 'certificates', label: 'Certificates', icon: Award, path: '/certificates' },
     { id: 'contactme', label: 'Contact', icon: Mail, path: '/contact' },
   ];
-
-  const handleNavClick = (section) => {
-    setActiveSection(section);
-    setIsMenuOpen(false);
-  };
 
   const isActive = (path) => {
     if (path === '/' && location.pathname === '/') return true;

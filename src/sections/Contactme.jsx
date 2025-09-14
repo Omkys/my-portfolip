@@ -133,7 +133,7 @@ export default function ContactMe({ setActiveSection }) {
                     <Github className="w-6 h-6 text-gray-600 group-hover:text-gray-900" />
                   </a>
                   <a
-                    href="https://linkedin.com/in/onkar-bobde"
+                    href="https://www.linkedin.com/in/onkar-bobde-770354286/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-blue-100 hover:bg-blue-200 rounded-xl flex items-center justify-center transition-colors group"

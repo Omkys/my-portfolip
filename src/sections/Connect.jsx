@@ -23,7 +23,7 @@ function Connect() {
 
         {/* LinkedIn */}
         <a
-          href="https://linkedin.com/in/your-linkedin"
+          href="https://www.linkedin.com/in/onkar-bobde-770354286/"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-3 bg-indigo-200 text-indigo-800 py-3 px-6 rounded-lg transition-all duration-300 ease-in-out hover:bg-indigo-300 hover:scale-105 hover:shadow-lg"
